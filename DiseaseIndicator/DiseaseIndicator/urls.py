@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.static import serve
+from django.conf.urls import url
 from . import views
 
 
@@ -29,8 +31,7 @@ urlpatterns = [
     path('getResult', views.calculate , name = 'getResult'),
     path('getResultAudio', views.audioCalculate , name = 'getResultaudio'),
     path('getCalAudio', views.audioCalculateResult , name = 'getAudioResult'),
-
-
-
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 
 ]
