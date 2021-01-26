@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Page</title>
+    {% load static %}
+
+    <link href="{% static 'DiseaseIndicator/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'DiseaseIndicator/jQuery/jquery-ui.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'DiseaseIndicator/style.css' %} ">
+
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container">
+           <div class="header-container d-flex align-items-center">
+                <div class="logo mr-auto">
+                    <h1 class="text-light"><a href="/"><span>Disease Indicator</span></a></h1>
+
+                </div>
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">About</a></li>
+                        <li><a href="/">Privacy & Policy</a></li>
+                        <li><a href="/">Contact</a></li>
+                    </ul>
+                </nav><!-- .nav-menu -->
+            </div><!-- End Header Container -->
+        </div>
+    </header><!-- End Header -->
+
+
+    <section id="hero" class=" align-items-center"  style="overflow: auto;">
+        <div class="container position-relative">
+            <div class="row ">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    See the list of symtomps
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <div class="row">
+                                        <div class="col-3" style="border-right: 2px solid black;">
+                                          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                            <a class="nav-link active" id="v-pills-g1-tab" data-toggle="pill" href="#v-pills-g1" role="tab" aria-controls="v-pills-g1" aria-selected="true">Group1</a>
+                                            <a class="nav-link" id="v-pills-g2-tab" data-toggle="pill" href="#v-pills-g2" role="tab" aria-controls="v-pills-g2" aria-selected="false">Group2</a>
+                                            <a class="nav-link" id="v-pills-g3-tab" data-toggle="pill" href="#v-pills-g3" role="tab" aria-controls="v-pills-g3" aria-selected="false">Group3</a>
+                                            <a class="nav-link" id="v-pills-g4-tab" data-toggle="pill" href="#v-pills-g4" role="tab" aria-controls="v-pills-g4" aria-selected="false">Group4</a>
+                                            <a class="nav-link" id="v-pills-g5-tab" data-toggle="pill" href="#v-pills-g5" role="tab" aria-controls="v-pills-g5" aria-selected="false">Group5</a>
+                                            <a class="nav-link" id="v-pills-g6-tab" data-toggle="pill" href="#v-pills-g6" role="tab" aria-controls="v-pills-g6" aria-selected="false">Group6</a>
+                                            <a class="nav-link" id="v-pills-g7-tab" data-toggle="pill" href="#v-pills-g7" role="tab" aria-controls="v-pills-g7" aria-selected="false">Group7</a>
+                                            
+                                          </div>
+                                        </div>
+                                        <div class="col">
+                                          <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade show active" id="v-pills-g1" role="tabpanel" aria-labelledby="v-pills-g1-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-g2" role="tabpanel" aria-labelledby="v-pills-g2-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-g3" role="tabpanel" aria-labelledby="v-pills-g3-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-g4" role="tabpanel" aria-labelledby="v-pills-g4-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-g5" role="tabpanel" aria-labelledby="v-pills-g5-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-g6" role="tabpanel" aria-labelledby="v-pills-g6-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-g7" role="tabpanel" aria-labelledby="v-pills-g7-tab">
+                                                <table class="table table-sm table-bordered ">
+                                                    
+                                                    <tbody>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr>
+                                                        
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                      </tr>
+                                                      <tr class="table-info">
+                                                       
+                                                        <td>Symtomp</td>
+                                                        <td>Symtomp</td>
+                                                        <td></td>
+                                                      </tr>
+                                                      
+                                                      
+
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center position-relative">
+            <form action="/SymptomDetails" method="POST" onsubmit="return check()"> {% csrf_token %}
+                <div class="row justify-content-center">
+                    <div class="col-md-8 ">
+                        <label class="sr-only" for="symptom">Name</label>
+                        <div class="input-group mb-2 input-group-lg">
+                            <div class="input-group-prepend ">
+                                <div class="input-group-text">Enter your Major Symtomp</div>
+                            </div>
+                            <input type="text" class="form-control" name="input" id="symptom" placeholder="Chills, Skin Rash">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2" style="font-size: 22px;">Get More Details</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+
+
+
+<!-- JS scripts-->
+<script src="{% static 'DiseaseIndicator/bootstrap/js/jquery-3.5.1.slim.min.js' %}"> </script>
+<script src="{% static 'DiseaseIndicator/bootstrap/js/bootstrap.bundle.min.js' %}"> </script>
+
+<script src="{% static 'DiseaseIndicator/jQuery/jquery-1.12.4.js' %}"></script>
+<script src="{% static 'DiseaseIndicator/jQuery/jquery-ui.js' %}"></script>
+
+<script>
+ 
+      function check(){
+        symp= document.getElementById("symptom").value;
+        list= ['itching','skin rash','nodal skin eruptions','continuous sneezing','shivering','chills',
+         'joint pain','stomach pain','acidity','ulcers on tongue','muscle wasting','vomiting','burning micturition','spotting urination',
+         'fatigue','weight gain','anxiety','cold hands and feets','mood swings','weight loss','restlessness','lethargy','patches in throat',
+         'irregular sugar level','cough','high fever','sunken eyes','breathlessness','sweating','dehydration','indigestion','headache',
+         'yellowish skin','dark urine','nausea','loss of appetite','pain behind the eyes','back pain','constipation','abdominal pain',
+         'diarrhoea','mild fever','yellow urine','yellowing of eyes','acute liver failure','fluid overload','swelling of stomach',
+         'swelled lymph nodes','malaise','blurred and distorted vision','phlegm','throat irritation','redness of eyes','sinus pressure',
+         'runny nose','congestion','chest pain','weakness in limbs','fast heart rate','pain during bowel movements','pain in anal region',
+         'bloody stool','irritation in anus','neck pain','dizziness','cramps','bruising','obesity','swollen legs','swollen blood vessels',
+         'puffy face and eyes','enlarged thyroid','brittle nails','swollen extremeties','excessive hunger','extra marital contacts',
+         'drying and tingling lips','slurred speech','knee pain','hip joint pain','muscle weakness','stiff neck','swelling joints',
+         'movement stiffness','spinning movements','loss of balance','unsteadiness','weakness of one body side','loss of smell',
+         'bladder discomfort','foul smell of urine','continuous feel of urine','passage of gases','internal itching','toxic look (typhos)','depression','irritability','muscle pain','altered sensorium','red spots over body','belly pain','abnormal menstruation','dischromic patches','watering from eyes','increased appetite','polyuria','family history','mucoid sputum','rusty sputum','lack of concentration','visual disturbances','receiving blood transfusion','receiving unsterile injections','coma','stomach bleeding','distention of abdomen','history of alcohol consumption','blood in sputum','prominent veins on calf','palpitations','painful walking','pus filled pimples','blackheads','scurring','skin peeling','silver like dusting',
+         'small dents in nails','inflammatory nails','blister','red sore around nose','yellow crust ooze']
+    
+      
+        for(i=0; i<list.length; i++)
+        {
+          if(symp==list[i])       
+              return true;         
+        }        
+        return false;
+      
+      }
+
+</script>
+
+<script>
+$( function() {    
+
+ var list= ['itching','skin rash','nodal skin eruptions','continuous sneezing','shivering','chills',
+ 'joint pain','stomach pain','acidity','ulcers on tongue','muscle wasting','vomiting','burning micturition','spotting urination',
+ 'fatigue','weight gain','anxiety','cold hands and feets','mood swings','weight loss','restlessness','lethargy','patches in throat',
+ 'irregular sugar level','cough','high fever','sunken eyes','breathlessness','sweating','dehydration','indigestion','headache',
+ 'yellowish skin','dark urine','nausea','loss of appetite','pain behind the eyes','back pain','constipation','abdominal pain',
+ 'diarrhoea','mild fever','yellow urine','yellowing of eyes','acute liver failure','fluid overload','swelling of stomach',
+ 'swelled lymph nodes','malaise','blurred and distorted vision','phlegm','throat irritation','redness of eyes','sinus pressure',
+ 'runny nose','congestion','chest pain','weakness in limbs','fast heart rate','pain during bowel movements','pain in anal region',
+ 'bloody stool','irritation in anus','neck pain','dizziness','cramps','bruising','obesity','swollen legs','swollen blood vessels',
+ 'puffy face and eyes','enlarged thyroid','brittle nails','swollen extremeties','excessive hunger','extra marital contacts',
+ 'drying and tingling lips','slurred speech','knee pain','hip joint pain','muscle weakness','stiff neck','swelling joints',
+ 'movement stiffness','spinning movements','loss of balance','unsteadiness','weakness of one body side','loss of smell',
+ 'bladder discomfort','foul smell of urine','continuous feel of urine','passage of gases','internal itching','toxic look (typhos)','depression','irritability','muscle pain','altered sensorium','red spots over body','belly pain','abnormal menstruation','dischromic patches','watering from eyes','increased appetite','polyuria','family history','mucoid sputum','rusty sputum','lack of concentration','visual disturbances','receiving blood transfusion','receiving unsterile injections','coma','stomach bleeding','distention of abdomen','history of alcohol consumption','blood in sputum','prominent veins on calf','palpitations','painful walking','pus filled pimples','blackheads','scurring','skin peeling','silver like dusting',
+ 'small dents in nails','inflammatory nails','blister','red sore around nose','yellow crust ooze']
+
+  $( "#symptom" ).autocomplete({ source: list },{autoFoucus:true});
+
+  
+} );
+</script>
+
+
+
+</body>
+
+</html>

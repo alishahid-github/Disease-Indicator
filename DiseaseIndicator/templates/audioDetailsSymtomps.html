@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ sym}}</title>
+    {% load static %}
+
+    <link href="{% static 'DiseaseIndicator/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'DiseaseIndicator/style.css' %} ">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container">
+            <div class="header-container d-flex align-items-center">
+                <div class="logo mr-auto">
+                    <h1 class="text-light"><a href="/"><span>Disease Indicator</span></a></h1>
+
+                </div>
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">About</a></li>
+                        <li><a href="/">Privacy & Policy</a></li>
+                        <li><a href="/">Contact</a></li>
+                    </ul>
+                </nav><!-- .nav-menu -->
+            </div><!-- End Header Container -->
+        </div>
+    </header><!-- End Header -->
+
+
+    <section id="hero" class=" align-items-center" style="overflow: auto;">      <br>
+      <h3 class="text-center text-white mt-3" >Select The Symtomps that you are suffering</h3>
+        <div class="container" style="padding-top: 10px;">
+            <form action="/getResult" method="POST" > {% csrf_token %}
+                <div class="container text-white">
+                  <div class="row row-cols-4">
+                    {% for i in list1 %}
+                      <div class="col">
+                                <li>{{i|title}}</li>
+                      </div>
+
+                    {% endfor %}
+                        </div>
+
+                  </div>
+
+
+                <br>
+                <div class="container text-center pt-1" style="position:relative">
+                    <button type="submit" class="btn btn-primary mb-2" style="font-size: 22px;">Get Results</button>
+                </div>
+
+            </form>
+        </div>
+         <form action="/getResultAudio" method="POST" onsubmit=""> {% csrf_token %}
+              <button id="click" class="btn btn-danger d-none"></button>
+        </form>
+    </section>
+
+
+
+
+<!-- JS scripts-->
+<script src="{% static 'DiseaseIndicator/bootstrap/js/jquery-3.5.1.slim.min.js' %}"> </script>
+<script src="{% static 'DiseaseIndicator/bootstrap/js/bootstrap.bundle.min.js' %}"> </script>
+
+
+
+
+<script>
+    $(document).ready(function(){
+
+    $('#click').trigger('click');
+        setTimeout(() => {
+            $('#submitButton').trigger('click');
+            $('#submitButton').click();
+        }, 1000);
+    })
+</script>
+
+
+
+</body>
+
+</html>

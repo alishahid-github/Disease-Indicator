@@ -1,0 +1,72 @@
+<!--change button color at home -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    {% load static %}
+
+    <link href="{% static 'DiseaseIndicator/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+   
+    <link rel="stylesheet" href="{% static 'DiseaseIndicator/style.css' %} ">
+</head>
+
+<body>
+<!-- Start Home Screen-->
+<!-- <div class="container-fluid header text-center">
+       
+</div>  -->
+
+ <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center">
+        <div class="logo mr-auto">
+          <h1 class="text-light"><a href="/"><span>Disease Indicator</span></a></h1>
+         
+        </div>
+
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">About</a></li>
+            <li><a href="/">Privacy & Policy</a></li>
+            <li><a href="/">Contact</a></li>
+          </ul>
+        </nav><!-- .nav-menu -->
+      </div><!-- End Header Container -->
+    </div>
+  </header><!-- End Header -->
+
+  
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container text-center position-relative">
+        <h1 class="display-3">Welcome To</h1>
+        <h1 class="display-4">ABC Disease Indicator</h1> 
+        <a href="/Symptom" class="btn btn-lg btn-info" role="button">Visual</a>
+        <a href="/audioSymptom" class="btn btn-lg  btn-info" role="button">Audio</a>
+    </div>
+  </section>
+
+ <form action="/start" method="POST" onsubmit=""> {% csrf_token %} <button id="click" class="btn btn-danger d-none"></button>  </form>
+
+
+
+<!-- JS scripts-->
+<script src="{% static 'DiseaseIndicator/bootstrap/js/jquery-3.5.1.slim.min.js' %}"> </script>
+<script src="{% static 'DiseaseIndicator/bootstrap/js/bootstrap.bundle.min.js' %}"> </script>
+
+
+
+<script>
+    $(document).ready(function(){
+
+    $('#click').trigger('click');
+    })
+</script>
+
+
+</body>
+</html>
