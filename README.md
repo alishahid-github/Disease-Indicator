@@ -1,2 +1,2 @@
-# Disease Indicator Repo
+# Disease Indicator
  Disease Indicator term project using AI
