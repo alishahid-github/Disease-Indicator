@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting</title>
+   {% load static %}
+
+    <link href="{% static 'DiseaseIndicator/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'DiseaseIndicator/style.css' %} ">
+</head>
+
+
+<body  class="welcome" onload="myFunction2()">
+
+
+    <span id="splash-overlay" class="splash"></span>
+    <span id="welcome" class="z-depth-4"></span>
+    
+    
+    
+   
+
+<script>
+function myFunction2() {
+    
+  setTimeout(function(){ 
+  
+  location.href="/Index";
+  
+   }, 3500);
+}
+</script>
+
+
+
+  
+</script>
+</body>
+
+
+
+
+</html>
