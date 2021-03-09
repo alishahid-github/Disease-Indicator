@@ -1,3 +1,4 @@
+from math import trunc
 from django.http import  HttpResponse
 from django.shortcuts import render
 import pandas as pd
@@ -5,8 +6,15 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from . import stack as S
 from . import KNN as K
+import os
 import  chime
+
 chime.theme("big-sur")
+
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 def start(request):
@@ -26,27 +34,34 @@ def start(request):
         eng.runAndWait()
 
     sayToSpeaker("Welcome. Say yes, if you want to start the audio system. Otherwise say no.")
+    answered=False   #this is used to repeat untill user does not say yes or no
+    while not answered:        
+        with sr.Microphone() as source:
+            chime.success()
+            audio = r.listen(source)
 
-    with sr.Microphone() as source:
-        chime.success()
-        audio = r.listen(source)
+        try:
+            chime.info()
+            user_said=r.recognize_google(audio).__str__().lower()
+            print(user_said)
+            if "yes" in user_said:
+                sayToSpeaker("We are initiating the Audio System. Let's get started")
+                answered=True
+                return render(request,'a_home.html')
 
-    try:
-        chime.info()
-        if "yes" in r.recognize_google(audio).__str__().lower():
-            sayToSpeaker("We are initiating the Audio System. Let's get started")
-            print("")
-            return render(request,'a_home.html')
-
-        if "no" in r.recognize_google(audio).__str__().lower():
-            sayToSpeaker("We are getting to the Visual Page")
-            return render(request, 'symtomps.html')
-
-    except LookupError:
-        print("Could not understand audio")
-    except Exception as e:
-        print("Could not understand audio")
-    return render(request, 'symtomps.html')
+            elif "no" in user_said:
+                sayToSpeaker("We are getting you to the Visual Page")
+                answered=True
+                return render(request, 'symtomps.html')
+            else:
+                sayToSpeaker("Please Please Say yes, if you want to start the audio system. Otherwise say no.")
+            
+        except:
+            sayToSpeaker("Could not understand audio. Please say again")
+        
+    
+def starter(request):
+    return render(request,'starter.html')
 
 def index(request):
     return render(request,'index.html')
@@ -57,8 +72,10 @@ def getSymptopm(request):
 
 ResSymp=[]
 def detSymptopm(request):
-    sympDictionary = pd.read_csv(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomps.csv").to_dict()
-    name = request.POST.get('input', 'chills')
+    
+    sympDictionary = pd.read_csv(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomps.csv" )).to_dict()
+    name = request.POST.get('input', 'Chills')
+    
 
     symptom = sympDictionary[name]
     symptomList = list(symptom.values())
@@ -113,7 +130,7 @@ def calculate(request):
     global ResSymp
     temp=ResSymp
     inputList = [0 for x in range(0, 132)]
-    sympDictionary = pd.read_csv( r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomps.csv").to_dict()
+    sympDictionary = pd.read_csv(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomps.csv" )).to_dict()
     symp = list(sympDictionary.keys())
 
 
@@ -123,7 +140,7 @@ def calculate(request):
                 if (element == symp[k]):
                     inputList[k] = 1
 
-    data = pd.read_csv(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\dataSet.csv")
+    data = pd.read_csv(os.path.join( BASE_DIR, "static\DiseaseIndicator\dataSet.csv" ))
 
     X = data.to_numpy()
     X = X[:, 0:132]
@@ -145,7 +162,8 @@ def calculate(request):
 
     import csv
     precautionDictionary = {}
-    with open(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomPrecaution.csv") as csv_file:
+    with open(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomPrecaution.csv")) as csv_file:
+
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
@@ -153,7 +171,7 @@ def calculate(request):
             precautionDictionary.update(prec)
 
     description_list={}
-    with open(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomDescription.csv") as csv_file:
+    with open(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomDescription.csv")) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             description = {row[0]: row[1]}
@@ -175,8 +193,8 @@ def audioGetSymptom(request):
 AudioResSymp=[]
 def audioDetSymptopm(request):
 
-    sympDictionary = pd.read_csv(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\audioSymptomp.csv").to_dict()
-    name = request.POST.get('input', 'chills')
+    sympDictionary = pd.read_csv(os.path.join( BASE_DIR, r"static\DiseaseIndicator\audioSymptomp.csv")).to_dict()
+    name = request.POST.get('input', 'Chills')
 
     symptom = sympDictionary[name]
     symptomList = list(symptom.values())
@@ -231,8 +249,7 @@ audioResultInfo={}
 def audioCalculate(request):
 
     inputList = [0 for x in range(0, 132)]
-    sympDictionary = pd.read_csv(
-        r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomps.csv").to_dict()
+    sympDictionary = pd.read_csv(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomps.csv")).to_dict()
     symp = list(sympDictionary.keys())
 
 
@@ -255,30 +272,41 @@ def audioCalculate(request):
     sayToSpeaker("Answer me some questions in Yes or No. Say STOP to end this questionnaire")
 
     global AudioResSymp
-
+    isStop=False
     for element in AudioResSymp:
-        sayToSpeaker("Are you Suffering from " + element + ".")
-        with sr.Microphone() as source:
-            chime.success()
-            audio = r.listen(source)
+        while True:
+            sayToSpeaker("Are you Suffering from " + element + ".")
+            with sr.Microphone() as source:
+                chime.success()
+                audio = r.listen(source)
 
-        try:
-            chime.info()
-            if "yes" in r.recognize_google(audio).__str__().lower():
+            try:
+                chime.info()
                 print(r.recognize_google(audio).__str__().lower())
-                print(element)
-                for k in range(0, 131):
-                    if (element == symp[k]):                        
-                        inputList[k] = 1
+                if "yes" in r.recognize_google(audio).__str__().lower():
+                    print(element)
+                    for k in range(0, 131):
+                        if (element == symp[k]):                        
+                            inputList[k] = 1
+                    break
+                elif "stop" in r.recognize_google(audio).__str__().lower():
+                    isStop=True
+                    break
+                    
+                elif "no" in r.recognize_google(audio).__str__().lower():
+                    isStop=False
+                    break
+                else:                  
+                    sayToSpeaker("Could not understand audio Say Yes or no")
 
-            if "stop" in r.recognize_google(audio).__str__().lower():
-                break
+            except :
+                sayToSpeaker("Could not understand audio")
+        
+        if isStop==True:
+            break                
 
-        except LookupError:
-            print("Could not understand audio")
 
-
-    data = pd.read_csv(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\dataSet.csv")
+    data = pd.read_csv(os.path.join( BASE_DIR, "static\DiseaseIndicator\dataSet.csv"))
 
     X = data.to_numpy()
     X = X[:, 0:132]
@@ -300,7 +328,7 @@ def audioCalculate(request):
 
     import csv
     precautionDictionary = {}
-    with open(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomPrecaution.csv") as csv_file:
+    with open(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomPrecaution.csv")) as csv_file:
 
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
@@ -308,7 +336,7 @@ def audioCalculate(request):
             precautionDictionary.update(prec)
 
     description_list={}
-    with open(r"D:\PythonProjects\TermProject\DiseaseIndicator\static\DiseaseIndicator\symptomDescription.csv") as csv_file:
+    with open(os.path.join( BASE_DIR, "static\DiseaseIndicator\symptomDescription.csv")) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             description = {row[0]: row[1]}
@@ -344,24 +372,67 @@ def audioCalculateResult(request):
     global audioResultInfo
 
     sayToSpeaker("Our System had predicted that you MIGHT have " + str(round(audioResultInfo["Accuracy"],2)) + "%  chance of " + audioResultInfo["DiseaseName"])
-    sayToSpeaker("These results are generated by computer. Consult the Doctor for final words.")
-    sayToSpeaker("Say Yes if you want to listen Description and precautionary measurements?")
+    sayToSpeaker("These results are generated by computer. Consult the Doctor for final words. Say Yes if you want to listen Description and precautionary measurements?")
+    
+    def askSession():
+        sayToSpeaker("Do You want to start another session? Say Yes if you want")
+        with sr.Microphone() as source:
+            chime.success()
+            audio = r.listen(source)
 
-    with sr.Microphone() as source:
-        chime.success()
-        audio = r.listen(source)
+        try:
+            chime.info()
+            
+            if "yes" in r.recognize_google(audio).__str__().lower():
+                return True
+            elif "no" in r.recognize_google(audio).__str__().lower():
+                return False
+            else:
+                sayToSpeaker("Could not understand Say Yes if you want to start new session otherwise say no")
+                askSession()
+        except :
+            sayToSpeaker("Could not understand audio")     
+            askSession()  
 
-    try:
-        chime.info()
-        if "yes" in r.recognize_google(audio).__str__().lower():
-            print(r.recognize_google(audio).__str__().lower())
-            sayToSpeaker(audioResultInfo["DiseaseDescription"])
-            sayToSpeaker("Here are the Precautions ")
-            for pre in audioResultInfo["Precautions"]:
-                if pre != "":
-                    sayToSpeaker(pre)
+    
+    def startDescription():
+        with sr.Microphone() as source:
+            chime.success()
+            audio = r.listen(source)
 
-    except LookupError:
-        print("Could not understand audio")
-    return render(request,'result.html', audioResultInfo)
+        try:
+            chime.info()
+            if "yes" in r.recognize_google(audio).__str__().lower():
+                print(r.recognize_google(audio).__str__().lower())
+                sayToSpeaker(audioResultInfo["DiseaseDescription"])
+                sayToSpeaker("Here are the Precautions ")
+                for pre in audioResultInfo["Precautions"]:
+                    if pre != "":
+                        sayToSpeaker(pre)   
+                if askSession():                    
+                        return True;                        
+                else:
+                    return False;
+                        
+
+            elif "no" in r.recognize_google(audio).__str__().lower():
+                    if askSession():                      
+                       return True;                        
+                    else:
+                        return False;
+                        
+            else:
+                sayToSpeaker("Could not understand audio Say Yes if you want to listen Description and precautionary measurements?")
+                startDescription()
+        except :
+            sayToSpeaker("Could not understand audio")     
+            startDescription()   
+
+   
+    if startDescription()==True:
+        return render(request,'index.html')
+    else:        
+        return render(request,'result.html', audioResultInfo)
+
+
 
